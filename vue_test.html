@@ -1,0 +1,86 @@
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+    <button @click="pop()"> 레이어 보기</button>
+    <div v-if="isPop"> Layout </div>
+
+    <span @click="shareTest">[공유]</span>
+    <span @click="facebookTest">[페이스북]</span>
+    <span @click="twiterTest">[트위터] </span>
+</div>
+
+
+<script>
+    new Vue({
+        el:"#app",
+        data(){
+            return{
+                isPop : false,
+
+            }
+        },
+        created() {},
+        methods:{
+            pop(){
+                console.log('pop')
+                this.isPop = true;
+                setTimeout( () => {
+                    this.isPop = false;
+                },700)
+                
+            },
+            shareTest(snsType=null){
+
+                var shareTitle = '';
+                var shareText = '';
+                var contentURL = "/share/shareUrl";
+                var URLPreFix = "";
+
+                URLPreFix = URLPreFix + "//" + location.href;
+
+                var  shareURL = URLPreFix + contentURL;
+
+
+                if(navigator.share){
+                    navigator.share({
+                        title : "",
+                        text : "",
+                        url : "",
+                    })
+                    .then( ()=> console.log('share text') )
+                        .catch( (error) => console.log('Error', error) )
+                }else{
+                    alert('지원되지 않는 환경')
+                }
+            },
+            facebookTest() {
+
+            alert(typeof navigator.share)
+            const sendText = "페이스북1_공유"; // 공유할 텍스트
+            //const sendUrl = "naver.com"; // 공유할 URL
+            const pagesUrl = this.currentUrl;
+            console.log("pagesUrl : ", pagesUrl)
+            window.open(
+                `http://www.facebook.com/sharer/sharer.php?u=${sendText}&url=${pagesUrl}`
+            );
+            },
+            twiterTest(){
+            alert(typeof navigator.share)
+            // console.log( navigator.share )
+            const sendText = "테스트 공유"; // 공유할 텍스트
+            const sendUrl = "naver.com"; // 공유할 URL
+            const pagesUrl = this.currentUrl;
+            console.log("pagesUrl : ", pagesUrl)
+            window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pagesUrl}`);
+            },
+        },
+
+});
+
+</script>
