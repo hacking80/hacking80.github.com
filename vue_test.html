@@ -15,7 +15,8 @@
     <button @click="pop()"> 레이어 보기</button>
     <div v-if="isPop"> Layout </div>
     -->
-
+    
+    <span @click="navigatorCheck"> navigater_CHECK </span>
     <span @click="shareTest">[공유하기]</span>
     <span @click="facebookTest">[페이스북]</span>
     <span @click="twiterTest">[트위터] </span>
@@ -46,6 +47,9 @@
                     this.isPop = false;
                 },700)
                 
+            },
+            navigatorCheck(){
+                alert(typeof navigator.share)
             },
             shareTest(snsType=null){
 
