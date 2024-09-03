@@ -61,24 +61,25 @@
             },
             facebookTest() {
 
-            alert(typeof navigator.share)
-            const sendText = "페이스북1_공유"; // 공유할 텍스트
-            //const sendUrl = "naver.com"; // 공유할 URL
-            const pagesUrl = this.currentUrl;
-            console.log("pagesUrl : ", pagesUrl)
-            window.open(
-                `http://www.facebook.com/sharer/sharer.php?u=${sendText}&url=${pagesUrl}`
-            );
+                alert(typeof navigator.share())
+                const sendText = "페이스북1_공유"; // 공유할 텍스트
+                //const sendUrl = "naver.com"; // 공유할 URL
+                const pagesUrl = this.currentUrl;
+                console.log("pagesUrl : ", pagesUrl)
+                window.open(
+                    `http://www.facebook.com/sharer/sharer.php?u=${sendText}&url=${pagesUrl}`
+                );
+
             },
             twiterTest(){
-            alert(typeof navigator.share)
-            // console.log( navigator.share )
-            const sendText = "테스트 공유"; // 공유할 텍스트
-            const sendUrl = "naver.com"; // 공유할 URL
-            const pagesUrl = this.currentUrl;
-            console.log("pagesUrl : ", pagesUrl)
-            window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pagesUrl}`);
-            },
+                alert(typeof navigator.share())
+                // console.log( navigator.share )
+                const sendText = "테스트 공유"; // 공유할 텍스트
+                const sendUrl = "naver.com"; // 공유할 URL
+                const pagesUrl = this.currentUrl;
+                console.log("pagesUrl : ", pagesUrl)
+                window.open(`https://twitter.com/intent/tweet?text=${sendText}&url=${pagesUrl}`);
+                },
         },
 
 });
